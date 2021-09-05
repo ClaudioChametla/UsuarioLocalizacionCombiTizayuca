@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "967584356355",
+    "project_id": "lozaliza-combi-tizayuca",
+    "storage_bucket": "lozaliza-combi-tizayuca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967584356355:android:f45baf003d0b0484785636",
+        "android_client_info": {
+          "package_name": "com.chametla.localizacioncombitizayuca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967584356355-dr9ctvdmtk4ml2bu03lm32uk2619advg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chametla.localizacioncombitizayuca",
+            "certificate_hash": "9cf39e413415bcf3b5cdefd126edaab640cee2ae"
+          }
+        },
+        {
+          "client_id": "967584356355-m680ab43edbdii3dtn5v9amfnpdqnsa0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKPBF1zh7I-fvOpYCJKNLxWwy2u3n42L4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967584356355-m680ab43edbdii3dtn5v9amfnpdqnsa0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
