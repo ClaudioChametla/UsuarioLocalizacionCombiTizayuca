@@ -38,32 +38,30 @@ public class UserLogin extends AppCompatActivity {
         mAtuh = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        botonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login();
-            }
-        });
+        botonLogin.setOnClickListener(view -> login());
     }
 
     private void login() {
         String email = TextInputEmail.getText().toString();
         String password = TextInputPassword.getText().toString();
 
-        if(email.isEmpty() && !password.isEmpty()){
+        if(!email.isEmpty() && !password.isEmpty()){
             if (password.length() >= 6){
-                mAtuh.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(UserLogin.this, "Login Realizado con Exito",Toast.LENGTH_SHORT).show();
+                mAtuh.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+                        if (task.isSuccessful()){
+                            Toast.makeText(UserLogin.this, "Bienvenido", Toast.LENGTH_SHORT).show();
                             }
-                            else {
-                                Toast.makeText(UserLogin.this, "La correo o la contraseña son incorrectos",Toast.LENGTH_SHORT).show();
-                            }
+                        else {
+                            Toast.makeText(UserLogin.this, "El correo o contraseña son incorrectos", Toast.LENGTH_SHORT).show();
                         }
                     });
             }
+            else{
+                Toast.makeText(this, "La contraseña debe tener mas de 6 caracteres", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else{
+            Toast.makeText(this, "Ingrese un correo y una contraseña", Toast.LENGTH_SHORT).show();
         }
     }
 }
