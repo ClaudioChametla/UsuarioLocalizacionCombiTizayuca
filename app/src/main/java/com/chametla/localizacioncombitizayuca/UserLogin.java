@@ -3,6 +3,7 @@ package com.chametla.localizacioncombitizayuca;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import dmax.dialog.SpotsDialog;
+
 public class UserLogin extends AppCompatActivity {
 
     TextInputEditText TextInputEmail;
@@ -24,6 +27,8 @@ public class UserLogin extends AppCompatActivity {
 
     FirebaseAuth mAtuh;
     DatabaseReference mDatabase;
+
+    AlertDialog load;
 
 
     @Override
@@ -38,6 +43,8 @@ public class UserLogin extends AppCompatActivity {
         mAtuh = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        load = new SpotsDialog.Builder().setContext(UserLogin.this).setMessage("Cargando").build();
+
         botonLogin.setOnClickListener(view -> login());
     }
 
@@ -47,6 +54,7 @@ public class UserLogin extends AppCompatActivity {
 
         if(!email.isEmpty() && !password.isEmpty()){
             if (password.length() >= 6){
+                load.show();
                 mAtuh.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                         if (task.isSuccessful()){
                             Toast.makeText(UserLogin.this, "Bienvenido", Toast.LENGTH_SHORT).show();
@@ -55,6 +63,7 @@ public class UserLogin extends AppCompatActivity {
                             Toast.makeText(UserLogin.this, "El correo o contraseña son incorrectos", Toast.LENGTH_SHORT).show();
                         }
                     });
+                load.dismiss();
             }
             else{
                 Toast.makeText(this, "La contraseña debe tener mas de 6 caracteres", Toast.LENGTH_SHORT).show();
