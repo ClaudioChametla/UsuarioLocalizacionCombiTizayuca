@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -57,7 +58,10 @@ public class UserLogin extends AppCompatActivity {
                 load.show();
                 mAtuh.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
                         if (task.isSuccessful()){
-                            Toast.makeText(UserLogin.this, "Bienvenido", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserLogin.this, "¡Hola de nuevo!, Bienvenido", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(UserLogin.this,UserMap.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
                             }
                         else {
                             Toast.makeText(UserLogin.this, "El correo o contraseña son incorrectos", Toast.LENGTH_SHORT).show();

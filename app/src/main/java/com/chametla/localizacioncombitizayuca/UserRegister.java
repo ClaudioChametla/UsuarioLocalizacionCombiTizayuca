@@ -3,6 +3,7 @@ package com.chametla.localizacioncombitizayuca;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -92,7 +93,10 @@ public class UserRegister extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<Void> task2) {
                             if(task2.isSuccessful()){
-                                Toast.makeText(UserRegister.this, "Succesful alv", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserRegister.this, "¡Bienvenido!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(UserRegister.this,UserMap.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
                             }
                             else{
                                 Toast.makeText(UserRegister.this, "No se pudo registrar el usuario.", Toast.LENGTH_SHORT).show();
